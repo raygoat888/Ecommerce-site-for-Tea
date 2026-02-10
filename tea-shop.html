@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity Tea Co. - Premium Artisan Teas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-sage: #8B9D83;
+            --color-sage-dark: #6B7D63;
+            --color-cream: #FAF8F3;
+            --color-charcoal: #2C3333;
+            --color-terracotta: #C17A5C;
+            --color-gold: #D4AF37;
+            --color-light-sage: #C8D5C0;
+            --spacing-unit: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--color-cream);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(139, 157, 131, 0.2);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-sage-dark);
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 5);
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-charcoal);
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-sage);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-sage-dark);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cart-icon {
+            background: var(--color-sage);
+            color: white;
+            border: none;
+            padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .cart-icon:hover {
+            background: var(--color-sage-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 157, 131, 0.3);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--color-terracotta);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-light-sage) 0%, var(--color-cream) 100%);
+            padding: calc(var(--spacing-unit) * 15) calc(var(--spacing-unit) * 4);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 157, 131, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            color: var(--color-charcoal);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--color-sage-dark);
+            max-width: 600px;
+            margin: 0 auto calc(var(--spacing-unit) * 5);
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+        
+        .cta-button {
+            background: var(--color-sage);
+            color: white;
+            border: none;
+            padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 6);
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(139, 157, 131, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+        
+        .cta-button:hover {
+            background: var(--color-sage-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(139, 157, 131, 0.4);
+        }
+        
+        /* Products Section */
+        .products {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 8);
+        }
+        
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--color-charcoal);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .section-header p {
+            color: var(--color-sage-dark);
+            font-size: 1.1rem;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(139, 157, 131, 0.25);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 280px;
+            background: var(--color-light-sage);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--color-terracotta);
+            color: white;
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            z-index: 1;
+        }
+        
+        .product-info {
+            padding: calc(var(--spacing-unit) * 3);
+        }
+        
+        .product-category {
+            color: var(--color-sage-dark);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+            font-weight: 500;
+        }
+        
+        .product-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: calc(var(--spacing-unit) * 2.5);
+            line-height: 1.6;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-sage-dark);
+        }
+        
+        .add-to-cart {
+            background: var(--color-sage);
+            color: white;
+            border: none;
+            padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--color-sage-dark);
+            transform: scale(1.05);
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .cart-modal.active {
+            display: flex;
+        }
+        
+        .cart-content {
+            background: white;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .cart-header {
+            background: var(--color-sage);
+            color: white;
+            padding: calc(var(--spacing-unit) * 3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-cart:hover {
+            transform: rotate(90deg);
+        }
+        
+        .cart-items {
+            padding: calc(var(--spacing-unit) * 3);
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(var(--spacing-unit) * 2);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .cart-item-info h4 {
+            font-size: 1.1rem;
+            color: var(--color-charcoal);
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+        }
+        
+        .cart-item-price {
+            color: var(--color-sage-dark);
+            font-weight: 600;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 2);
+        }
+        
+        .quantity-btn {
+            background: var(--color-light-sage);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--color-sage);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .remove-item {
+            background: var(--color-terracotta);
+            color: white;
+            border: none;
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-item:hover {
+            background: #A15A3C;
+            transform: scale(1.05);
+        }
+        
+        .cart-footer {
+            padding: calc(var(--spacing-unit) * 3);
+            border-top: 2px solid var(--color-light-sage);
+            background: var(--color-cream);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            color: var(--color-charcoal);
+        }
+        
+        .checkout-section {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 2);
+        }
+        
+        .payment-methods {
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .payment-methods h3 {
+            font-size: 1rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            color: var(--color-charcoal);
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 2);
+            flex-wrap: wrap;
+        }
+        
+        .payment-option {
+            flex: 1;
+            min-width: 100px;
+            padding: calc(var(--spacing-unit) * 2);
+            border: 2px solid var(--color-light-sage);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .payment-option:hover {
+            border-color: var(--color-sage);
+            background: rgba(139, 157, 131, 0.05);
+        }
+        
+        .payment-option.active {
+            border-color: var(--color-sage);
+            background: var(--color-sage);
+            color: white;
+        }
+        
+        .checkout-btn {
+            background: var(--color-sage);
+            color: white;
+            border: none;
+            padding: calc(var(--spacing-unit) * 2.5);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 157, 131, 0.3);
+        }
+        
+        .checkout-btn:hover {
+            background: var(--color-sage-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 157, 131, 0.4);
+        }
+        
+        .shopify-sync {
+            background: #95BF47;
+            color: white;
+            border: none;
+            padding: calc(var(--spacing-unit) * 2);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .shopify-sync:hover {
+            background: #7FA037;
+            transform: translateY(-2px);
+        }
+        
+        /* Features Section */
+        .features {
+            background: white;
+            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
+        }
+        
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(var(--spacing-unit) * 5);
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 4);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .feature-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            color: var(--color-charcoal);
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 4);
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .tech-info {
+            margin-top: calc(var(--spacing-unit) * 4);
+            padding-top: calc(var(--spacing-unit) * 4);
+            border-top: 1px solid rgba(250, 248, 243, 0.2);
+            font-size: 0.9rem;
+            color: var(--color-light-sage);
+        }
+        
+        /* Empty Cart Message */
+        .empty-cart {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 3);
+            color: #999;
+        }
+        
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-options {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Serenity Tea Co.</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cart-icon" onclick="toggleCart()">
+                🛒 Cart
+                <span class="cart-count">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Artisan Teas, Mindfully Sourced</h1>
+        <p>Discover our curated collection of premium loose-leaf teas from around the world. Each blend is crafted with care for your perfect moment of tranquility.</p>
+        <button class="cta-button" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+            Explore Collection
+        </button>
+    </section>
+
+    <section class="products" id="products">
+        <div class="section-header">
+            <h2>Our Tea Collection</h2>
+            <p>Handpicked selections from the world's finest tea gardens</p>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌿</div>
+                <h3>Organic & Ethical</h3>
+                <p>All our teas are organically grown and ethically sourced from sustainable farms worldwide.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Free Shipping</h3>
+                <p>Enjoy complimentary shipping on orders over $50 anywhere in North America.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Secure Payments</h3>
+                <p>Multiple payment options via Stripe: Visa, Mastercard, Amex, PayPal, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏪</div>
+                <h3>Shopify Integration</h3>
+                <p>Seamlessly sync with Shopify for inventory management and multi-channel selling.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button class="close-cart" onclick="toggleCart()">×</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">
+                    <div class="empty-cart-icon">🛒</div>
+                    <p>Your cart is empty</p>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <div class="checkout-section">
+                    <div class="payment-methods">
+                        <h3>Select Payment Method:</h3>
+                        <div class="payment-options">
+                            <div class="payment-option active" data-method="stripe">
+                                💳 Card
+                            </div>
+                            <div class="payment-option" data-method="paypal">
+                                PayPal
+                            </div>
+                            <div class="payment-option" data-method="apple">
+                                Apple Pay
+                            </div>
+                        </div>
+                    </div>
+                    <button class="checkout-btn" onclick="processCheckout()">
+                        Proceed to Secure Checkout
+                    </button>
+                    <button class="shopify-sync" onclick="syncWithShopify()">
+                        🔄 Sync with Shopify
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Serenity Tea Co. All rights reserved.</p>
+            <div class="tech-info">
+                <p><strong>E-commerce Technology Stack:</strong></p>
+                <p>✓ Stripe Payment Integration (Visa, Mastercard, Amex, PayPal)</p>
+                <p>✓ Shopify Compatible API</p>
+                <p>✓ Responsive Design (Mobile, Tablet, Desktop)</p>
+                <p>✓ Secure SSL Checkout</p>
+                <p>✓ Real-time Inventory Management</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: 'Jade Dragon Pearls',
+                category: 'Green Tea',
+                price: 24.99,
+                description: 'Hand-rolled jasmine green tea pearls from Fujian province. Delicate floral notes with a sweet finish.',
+                badge: 'Bestseller',
+                icon: '🍵'
+            },
+            {
+                id: 2,
+                name: 'Golden Yunnan',
+                category: 'Black Tea',
+                price: 19.99,
+                description: 'Premium Chinese black tea with malty, slightly sweet flavor and golden tips.',
+                badge: 'Premium',
+                icon: '☕'
+            },
+            {
+                id: 3,
+                name: 'Ceremonial Matcha',
+                category: 'Matcha',
+                price: 34.99,
+                description: 'First harvest ceremonial grade matcha from Uji, Japan. Vibrant green with umami richness.',
+                badge: 'New',
+                icon: '🍃'
+            },
+            {
+                id: 4,
+                name: 'Organic Chamomile',
+                category: 'Herbal Tea',
+                price: 14.99,
+                description: 'Soothing organic chamomile flowers. Perfect for relaxation and bedtime.',
+                icon: '🌼'
+            },
+            {
+                id: 5,
+                name: 'Earl Grey Supreme',
+                category: 'Black Tea',
+                price: 18.99,
+                description: 'Classic Earl Grey with premium bergamot oil and silver tips. Citrus and floral.',
+                icon: '🫖'
+            },
+            {
+                id: 6,
+                name: 'White Peony',
+                category: 'White Tea',
+                price: 29.99,
+                description: 'Delicate white tea from Fujian. Sweet, light, with notes of melon and cucumber.',
+                badge: 'Limited',
+                icon: '🌸'
+            },
+            {
+                id: 7,
+                name: 'Masala Chai',
+                category: 'Spiced Tea',
+                price: 16.99,
+                description: 'Authentic Indian chai with cardamom, cinnamon, ginger, and black pepper.',
+                icon: '🌶️'
+            },
+            {
+                id: 8,
+                name: 'Moroccan Mint',
+                category: 'Green Tea',
+                price: 15.99,
+                description: 'Refreshing blend of gunpowder green tea and spearmint leaves. Cooling and invigorating.',
+                icon: '🌿'
+            }
+        ];
+
+        // Cart State
+        let cart = [];
+        let selectedPaymentMethod = 'stripe';
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    <div class="product-image">${product.icon}</div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-footer">
+                            <div class="product-price">$${product.price.toFixed(2)}</div>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCart();
+            showNotification('Added to cart!');
+        }
+
+        // Update Cart Display
+        function updateCart() {
+            const cartCount = document.querySelector('.cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <p>Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-price">$${item.price.toFixed(2)} × ${item.quantity}</div>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">−</button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                            <button class="remove-item" onclick="removeFromCart(${item.id})">Remove</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Update Quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        // Toggle Cart Modal
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+        }
+
+        // Payment Method Selection
+        document.addEventListener('DOMContentLoaded', () => {
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    paymentOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    selectedPaymentMethod = option.dataset.method;
+                });
+            });
+        });
+
+        // Process Checkout (Stripe Integration Placeholder)
+        function processCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // In production, this would integrate with Stripe's API
+            alert(`Processing payment of $${total.toFixed(2)} via ${selectedPaymentMethod.toUpperCase()}\n\nStripe Integration:\n• Payment method: ${selectedPaymentMethod}\n• Amount: $${total.toFixed(2)}\n• Items: ${cart.length}\n\nIn production, this will redirect to Stripe's secure checkout page.`);
+            
+            // Simulate successful checkout
+            cart = [];
+            updateCart();
+            toggleCart();
+            showNotification('Order placed successfully! 🎉');
+        }
+
+        // Shopify Sync (API Integration Placeholder)
+        function syncWithShopify() {
+            alert('Shopify Sync\n\nThis feature connects to Shopify API to:\n• Sync inventory levels\n• Update product information\n• Export orders\n• Manage multi-channel sales\n\nAPI Endpoint: /api/shopify/sync\nStatus: Ready for integration');
+        }
+
+        // Show Notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--color-sage);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        // Initialize
+        renderProducts();
+    </script>
+</body>
+</html>
